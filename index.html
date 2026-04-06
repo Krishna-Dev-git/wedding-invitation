@@ -488,7 +488,7 @@
     .footer-bg {
       position: absolute;
       inset: 0;
-      /* background-image: url('couple-images.png'); */
+      background-image: url('couple-images.png');
       background-size: cover;
       background-position: center 30%;
       background-repeat: no-repeat;
@@ -497,15 +497,17 @@
       /* filter: sepia(40%) saturate(80%); */
     }
 
-    .footer-bg {
-      background-image: url('couple-images.png');
-    }
 
-    @media (max-width: 1023px) {
-      .footer-bg {
-        background-image: url('couple-images-mobile.png');
-        background-position: center 40%;
-      }
+    .footer-bg-mobile {
+      position: absolute;
+      inset: 0;
+      background-image: url('couple-images-mobile.png');
+      background-size: cover;
+      background-position: center 40%;
+      background-repeat: no-repeat;
+      opacity: 0.8;
+      z-index: 0;
+      /* filter: sepia(40%) saturate(80%); */
     }
   </style>
 </head>
@@ -893,7 +895,7 @@
 
 
   <!-- ══ FOOTER ══ -->
-  <section class="relative py-20 px-6 text-center">
+  <section class="relative py-20 px-6 text-center hidden lg:block">
     <!-- style="background:linear-gradient(to bottom,var(--cream),#f0e4cc);border-top:1px solid rgba(201,168,76,0.2);"> -->
     <div class="footer-bg"></div>
     <!-- Cream overlay to keep content readable -->
@@ -912,6 +914,25 @@
       <p class="font-playfair text-xl italic mb-6" style="color:rgba(107,26,26,0.75);">Your presence and blessings mean
         the world to us.</p>
 
+      <p class="font-playfair text-xs" style="color:rgba(107,26,26,0.9);">Made with endless love &amp; a thousand
+        blessings ♥</p>
+    </div>
+  </section>
+
+  <section class="relative py-20 px-6 text-center block lg:hidden">
+    <div class="footer-bg-mobile"></div>
+
+    <!-- Spacer to let faces show above content -->
+    <div class="h-[420px] md:h-[300px]"></div>
+
+    <div class="relative z-10 max-w-xl mx-auto z-10 p-5" style="background-color:rgba(253, 248, 240,0.8);">
+      <p class="font-cinzel text-sm font-semibold">From then to now, from us to forever</p>
+      <p class="font-vibes text-5xl md:text-6xl text-maroon mb-3 p-4">Krishna Kumar <br> &amp; <br> Mythili</p>
+      <p class="font-cinzel text-sm tracking-[0.25em]" style="color:rgba(107,26,26,1);">
+        are tying the knot</p>
+      <div class="ornament-divider my-8"><span style="color:var(--gold);">✦</span></div>
+      <p class="font-playfair text-xl italic mb-6" style="color:rgba(107,26,26,0.75);">Your presence and blessings mean
+        the world to us.</p>
       <p class="font-playfair text-xs" style="color:rgba(107,26,26,0.9);">Made with endless love &amp; a thousand
         blessings ♥</p>
     </div>
