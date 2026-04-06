@@ -270,6 +270,7 @@
       position: relative;
     }
 
+
     .hero-temple-bg {
       position: absolute;
       inset: 0;
@@ -483,6 +484,29 @@
         transform: translateY(0);
       }
     }
+
+    .footer-bg {
+      position: absolute;
+      inset: 0;
+      /* background-image: url('couple-images.png'); */
+      background-size: cover;
+      background-position: center 30%;
+      background-repeat: no-repeat;
+      opacity: 0.8;
+      z-index: 0;
+      /* filter: sepia(40%) saturate(80%); */
+    }
+
+    .footer-bg {
+      background-image: url('couple-images.png');
+    }
+
+    @media (max-width: 1023px) {
+      .footer-bg {
+        background-image: url('couple-images-mobile.png');
+        background-position: center 40%;
+      }
+    }
   </style>
 </head>
 
@@ -508,6 +532,7 @@
       </span>
     </div>
   </div>
+
   <button id="music-btn" onclick="toggleMusic()" title="Toggle music">♫</button>
   <audio id="bg-music" loop>
     <source src="bgm.mp3" type="audio/mpeg">
@@ -516,7 +541,7 @@
   <div id="hearts" class="fixed inset-0 pointer-events-none z-40 overflow-hidden"></div>
 
   <!-- ══ HERO ══ -->
-  <section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 pb-16">
+  <section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden pt-10 pb-16">
 
     <div class="hero-temple-bg"></div>
     <div class="hero-overlay"></div>
@@ -536,7 +561,19 @@
     <div class="relative z-10 text-center px-6 max-w-4xl mx-auto">
 
       <p
-        class="fade-in fade-in-delay-1 font-cinzel text-xs tracking-[0.25em] uppercase mb-3 hero-tagline font-bold py-4">
+        class="fade-in fade-in-delay-1 font-cinzel text-xs tracking-[0.25em] uppercase mb-1 hero-tagline font-bold py-1">
+        Two hearts, one choice
+      </p>
+      <p
+        class="fade-in fade-in-delay-1 font-cinzel text-xs tracking-[0.25em] uppercase mb-1 hero-tagline font-bold py-1">
+        To love, to grow,
+      </p>
+      <p
+        class="fade-in fade-in-delay-1 font-cinzel text-xs tracking-[0.25em] uppercase mb-1 hero-tagline font-bold py-1">
+        To stay… forever.
+      </p>
+      <p
+        class="fade-in fade-in-delay-1 font-cinzel text-xs tracking-[0.25em] uppercase mb-2 hero-tagline font-bold py-2">
         Together with our families
       </p>
 
@@ -769,26 +806,44 @@
       <p class="fade-in font-cinzel text-xs tracking-[0.22em] uppercase mb-3" style="color:var(--gold);">The big day is
       </p>
       <h2 class="fade-in font-playfair text-4xl md:text-5xl mb-10" style="color:var(--maroon);">Counting Down</h2>
-      <div class="fade-in flex items-start justify-center gap-4 md:gap-6 flex-wrap">
-        <div class="count-box">
-          <div class="font-playfair text-4xl md:text-5xl font-bold gold-text" id="days">00</div>
-          <div class="font-cinzel text-xs tracking-widest mt-2" style="color:rgba(107,26,26,0.6);">DAYS</div>
+      <div class="fade-in flex items-start justify-center flex-wrap" style="gap:0;">
+
+        <div class="text-center" style="min-width:72px;">
+          <div class="font-playfair gold-text" id="days"
+            style="font-size:clamp(2.5rem,8vw,4rem);font-weight:300;line-height:1;letter-spacing:-2px;">00</div>
+          <div class="font-cinzel text-xs tracking-widest mt-2" style="color:rgba(107,26,26,0.55);">DAYS</div>
         </div>
-        <div class="font-playfair text-4xl md:text-5xl font-bold mt-4" style="color:var(--gold);">:</div>
-        <div class="count-box">
-          <div class="font-playfair text-4xl md:text-5xl font-bold gold-text" id="hours">00</div>
-          <div class="font-cinzel text-xs tracking-widest mt-2" style="color:rgba(107,26,26,0.6);">HOURS</div>
+
+        <div class="font-playfair"
+          style="font-size:2.5rem;color:rgba(201,168,76,0.45);line-height:1;padding:4px 6px 0;align-self:flex-start;">·
         </div>
-        <div class="font-playfair text-4xl md:text-5xl font-bold mt-4" style="color:var(--gold);">:</div>
-        <div class="count-box">
-          <div class="font-playfair text-4xl md:text-5xl font-bold gold-text" id="minutes">00</div>
-          <div class="font-cinzel text-xs tracking-widest mt-2" style="color:rgba(107,26,26,0.6);">MINUTES</div>
+
+        <div class="text-center" style="min-width:72px;">
+          <div class="font-playfair gold-text" id="hours"
+            style="font-size:clamp(2.5rem,8vw,4rem);font-weight:300;line-height:1;letter-spacing:-2px;">00</div>
+          <div class="font-cinzel text-xs tracking-widest mt-2" style="color:rgba(107,26,26,0.55);">HOURS</div>
         </div>
-        <div class="font-playfair text-4xl md:text-5xl font-bold mt-4" style="color:var(--gold);">:</div>
-        <div class="count-box">
-          <div class="font-playfair text-4xl md:text-5xl font-bold gold-text" id="seconds">00</div>
-          <div class="font-cinzel text-xs tracking-widest mt-2" style="color:rgba(107,26,26,0.6);">SECONDS</div>
+
+        <div class="font-playfair"
+          style="font-size:2.5rem;color:rgba(201,168,76,0.45);line-height:1;padding:4px 6px 0;align-self:flex-start;">·
         </div>
+
+        <div class="text-center" style="min-width:72px;">
+          <div class="font-playfair gold-text" id="minutes"
+            style="font-size:clamp(2.5rem,8vw,4rem);font-weight:300;line-height:1;letter-spacing:-2px;">00</div>
+          <div class="font-cinzel text-xs tracking-widest mt-2" style="color:rgba(107,26,26,0.55);">MINUTES</div>
+        </div>
+
+        <div class="font-playfair"
+          style="font-size:2.5rem;color:rgba(201,168,76,0.45);line-height:1;padding:4px 6px 0;align-self:flex-start;">·
+        </div>
+
+        <div class="text-center" style="min-width:72px;">
+          <div class="font-playfair gold-text" id="seconds"
+            style="font-size:clamp(2.5rem,8vw,4rem);font-weight:300;line-height:1;letter-spacing:-2px;">00</div>
+          <div class="font-cinzel text-xs tracking-widest mt-2" style="color:rgba(107,26,26,0.55);">SECONDS</div>
+        </div>
+
       </div>
     </div>
     <div class="max-w-2xl mx-auto text-center hidden" id="wedding-live">
@@ -835,6 +890,71 @@
       </div>
     </div>
   </section>
+
+
+  <!-- ══ FOOTER ══ -->
+  <section class="relative py-20 px-6 text-center">
+    <!-- style="background:linear-gradient(to bottom,var(--cream),#f0e4cc);border-top:1px solid rgba(201,168,76,0.2);"> -->
+    <div class="footer-bg"></div>
+    <!-- Cream overlay to keep content readable -->
+
+    <div class="relative z-10 max-w-xl mx-auto z-10 p-5" style="background-color:rgba(253, 248, 240,0.8);">
+      <!-- <div class="fade-in mb-6">
+        <div class="inline-flex items-center justify-center w-40 h-40 rounded-2xl" style="">
+          <span class="font-vibes text-3xl p-2">K &nbsp; ♥&nbsp;M</span>
+        </div>
+      </div> -->
+      <p class="font-cinzel text-sm font-semibold">From then to now, from us to forever</p>
+      <p class="font-vibes text-5xl md:text-6xl text-maroon mb-3 p-4">Krishna Kumar <br> &amp; <br> Mythili</p>
+      <p class="font-cinzel text-sm tracking-[0.25em]" style="color:rgba(107,26,26,1);">
+        are tying the knot</p>
+      <div class="ornament-divider my-8"><span style="color:var(--gold);">✦</span></div>
+      <p class="font-playfair text-xl italic mb-6" style="color:rgba(107,26,26,0.75);">Your presence and blessings mean
+        the world to us.</p>
+
+      <p class="font-playfair text-xs" style="color:rgba(107,26,26,0.9);">Made with endless love &amp; a thousand
+        blessings ♥</p>
+    </div>
+  </section>
+
+
+  <!-- ══ EVENTS ══ -->
+  <section id="story" class="py-20 px-6">
+    <div class="max-w-2xl mx-auto">
+      <div class="text-center mb-14">
+        <h2 class="fade-in font-vibes text-5xl md:text-6xl gold-text py-4">Events</h2>
+      </div>
+      <div class="relative pl-10">
+        <div class="absolute left-3 top-0 bottom-0 w-0.5"
+          style="background:linear-gradient(to bottom,var(--gold),transparent);"></div>
+        <div class="fade-in relative mb-10">
+          <div class="absolute -left-8 top-0 w-3 h-3 rounded-full"
+            style="background:var(--gold);box-shadow:0 0 0 5px rgba(201,168,76,0.2);"></div>
+          <div class="glass rounded-2xl p-6">
+            <span class="font-cinzel text-sm tracking-widest font-semibold" style="color:var(--gold);">Celebrate with us
+              for</span>
+            <h3 class="font-cormorant text-3xl font-semibold mt-1 mb-2" style="color:var(--maroon);">Reception</h3>
+            <p class="font-cormorant text-base leading-relaxed font-bold" style="color:rgba(107,26,26,0.75);">22 April,
+              2026 07:00 PM Onwards</p>
+          </div>
+        </div>
+        <div class="fade-in fade-in-delay-1 relative mb-10">
+          <div class="absolute -left-8 top-1 w-3 h-3 rounded-full"
+            style="background:var(--rose);box-shadow:0 0 0 5px rgba(212,104,122,0.2);"></div>
+          <div class="glass rounded-2xl p-6">
+            <span class="font-cinzel text-sm tracking-widest font-semibold" style="color:var(--rose);">Join Us
+              For</span>
+            <h3 class="font-cormorant text-3xl font-semibold mt-1 mb-2" style="color:var(--maroon);">Wedding Ceremony
+            </h3>
+            <p class="font-cormorant text-base leading-relaxed font-bold" style="color:rgba(107,26,26,0.75);">23 April,
+              2026 07.30 AM to 09:00 AM</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
 
 
   <!-- ══ WEDDING DETAILS ══ -->
@@ -932,73 +1052,6 @@
       </div>
     </div>
   </section>
-
-
-  <!-- ══ EVENTS ══ -->
-  <section id="story" class="py-20 px-6">
-    <div class="max-w-2xl mx-auto">
-      <div class="text-center mb-14">
-        <h2 class="fade-in font-vibes text-5xl md:text-6xl gold-text py-4">Events</h2>
-      </div>
-      <div class="relative pl-10">
-        <div class="absolute left-3 top-0 bottom-0 w-0.5"
-          style="background:linear-gradient(to bottom,var(--gold),transparent);"></div>
-        <div class="fade-in relative mb-10">
-          <div class="absolute -left-8 top-0 w-3 h-3 rounded-full"
-            style="background:var(--gold);box-shadow:0 0 0 5px rgba(201,168,76,0.2);"></div>
-          <div class="glass rounded-2xl p-6">
-            <span class="font-cinzel text-sm tracking-widest font-semibold" style="color:var(--gold);">Celebrate with us
-              for</span>
-            <h3 class="font-cormorant text-3xl font-semibold mt-1 mb-2" style="color:var(--maroon);">Reception</h3>
-            <p class="font-cormorant text-base leading-relaxed font-bold" style="color:rgba(107,26,26,0.75);">22 April,
-              2026 07:00 PM Onwards</p>
-          </div>
-        </div>
-        <div class="fade-in fade-in-delay-1 relative mb-10">
-          <div class="absolute -left-8 top-1 w-3 h-3 rounded-full"
-            style="background:var(--rose);box-shadow:0 0 0 5px rgba(212,104,122,0.2);"></div>
-          <div class="glass rounded-2xl p-6">
-            <span class="font-cinzel text-sm tracking-widest font-semibold" style="color:var(--rose);">Join Us
-              For</span>
-            <h3 class="font-cormorant text-3xl font-semibold mt-1 mb-2" style="color:var(--maroon);">Wedding Ceremony
-            </h3>
-            <p class="font-cormorant text-base leading-relaxed font-bold" style="color:rgba(107,26,26,0.75);">23 April,
-              2026 07.30 AM to 09:00 AM</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ══ FOOTER ══ -->
-  <footer class="py-20 px-6 text-center"
-    style="background:linear-gradient(to bottom,var(--cream),#f0e4cc);border-top:1px solid rgba(201,168,76,0.2);">
-    <div class="max-w-xl mx-auto">
-      <div class="fade-in mb-6">
-        <div class="inline-flex items-center justify-center w-40 h-40 rounded-2xl"
-          style="background:linear-gradient(135deg,rgba(201,168,76,0.12),rgba(212,104,122,0.08));border:1px solid rgba(201,168,76,0.25);">
-          <span class="font-vibes text-3xl p-2">K &nbsp; ♥&nbsp;M</span>
-        </div>
-      </div>
-      <p class="font-vibes text-5xl md:text-6xl gold-text mb-3 p-4">Krishna Kumar <br> &amp; <br> Mythili</p>
-      <p class="font-cinzel text-xs tracking-[0.25em]" style="color:rgba(107,26,26,0.55);">23 APRIL 2026 · GUDUVANCHERY,
-        TAMIL NADU</p>
-      <div class="ornament-divider my-8"><span style="color:var(--gold);">✦</span></div>
-      <p class="font-cormorant text-xl italic mb-6" style="color:rgba(107,26,26,0.75);">Your presence and blessings mean
-        the world to us.</p>
-      <div class="mb-8">
-        <button onclick="addToCalendar()"
-          class="inline-flex items-center gap-2 px-8 py-3 rounded-full font-cinzel text-xs tracking-widest transition-all hover:opacity-80"
-          style="background:linear-gradient(135deg,var(--maroon),#8b2a2a);color:rgba(255,255,255,0.95);border:none;">
-          📅 Add to Calendar
-        </button>
-      </div>
-      <p class="font-poppins text-xs" style="color:rgba(107,26,26,0.4);">Made with endless love &amp; a thousand
-        blessings ♥</p>
-    </div>
-  </footer>
-
   <script>
     // ── Countdown ──
     const weddingDate = new Date('2026-04-23T09:30:00+05:30');
@@ -1111,6 +1164,8 @@
 
       document.getElementById('enter-screen').style.display = 'none';
     });
+
+
     // ── Add to calendar ──
     function addToCalendar() {
       window.open('https://calendar.google.com/calendar/render?action=TEMPLATE&text=Krishna+Kumar+%26+Mythili+Wedding&dates=20260423T020000Z/20260423T040000Z&details=SSK+Mahal+A%2FC%2C+Guduvanchery%2C+Tamil+Nadu&location=SSK+Mahal%2C+Guduvanchery', '_blank');
