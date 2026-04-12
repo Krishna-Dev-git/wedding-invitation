@@ -84,7 +84,6 @@
       color: var(--maroon);
     }
 
-    /* Brighter gold for dark temple bg */
     .gold-text-bright {
       background: linear-gradient(135deg, #fde68a 0%, #fcd34d 35%, #fbbf24 55%, #fde68a 80%, #f59e0b 100%);
       -webkit-background-clip: text;
@@ -211,14 +210,6 @@
       box-shadow: 0 8px 32px -8px rgba(107, 26, 26, 0.12);
     }
 
-    .gallery-img {
-      transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    .gallery-wrap:hover .gallery-img {
-      transform: scale(1.05);
-    }
-
     #music-btn {
       position: fixed;
       bottom: 28px;
@@ -260,16 +251,10 @@
       }
     }
 
-    .map-frame {
-      border-radius: 18px;
-      overflow: hidden;
-    }
-
-    /* ══ HERO TEMPLE BG ══ */
+    /* ══ HERO ══ */
     #hero {
       position: relative;
     }
-
 
     .hero-temple-bg {
       position: absolute;
@@ -327,16 +312,6 @@
       text-shadow: 0 1px 6px rgba(0, 0, 0, 0.5);
     }
 
-    .hero-scroll {
-      color: rgba(253, 230, 138, 0.45);
-    }
-
-    .hero-monogram {
-      background: linear-gradient(135deg, rgba(201, 168, 76, 0.22), rgba(212, 104, 122, 0.14));
-      border: 1px solid rgba(251, 191, 36, 0.45);
-      box-shadow: 0 4px 28px rgba(0, 0, 0, 0.45), inset 0 0 24px rgba(201, 168, 76, 0.12);
-    }
-
     .hero-line-l {
       background: linear-gradient(90deg, transparent, rgba(251, 191, 36, 0.75));
     }
@@ -350,73 +325,128 @@
       text-shadow: 0 0 14px rgba(251, 191, 36, 0.55);
     }
 
-    .shimmer-gold {
-      background: linear-gradient(90deg, #a07820 0%, #f0d060 25%, #d4af37 50%, #bfa133 75%, #a07820 100%);
-      background-size: 200% auto;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      animation: goldShimmer 4s linear infinite;
+    /* ══ SCROLL DOWN INDICATOR ══ */
+    .scroll-down-btn {
+      position: absolute;
+      bottom: 28px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      text-decoration: none;
+      animation: scrollFadeIn 1s ease 2s both;
     }
 
-    .shimmer-goldsecondary {
-      background: linear-gradient(90deg, #a07820 0%, #9f7418 25%, #c08f25 50%, #f2cd46 75%, #816018 100%);
-      background-size: 200% auto;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      animation: goldShimmer 4s linear infinite;
-    }
+    @keyframes scrollFadeIn {
+      from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(12px);
+      }
 
-    @keyframes goldShimmer {
       to {
-        background-position: 200% center;
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
       }
     }
 
-    .shimmer-maroon {
-      background: linear-gradient(90deg, #541111 0%, #a02828 25%, #6b1a1a 50%, #8b2222 75%, #681818 100%);
-      background-size: 200% auto;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      animation: maroonShimmer 4s linear infinite;
+    .scroll-down-btn:hover .scroll-label {
+      opacity: 1;
     }
 
-    @keyframes maroonShimmer {
+    .scroll-down-btn:hover .scroll-mouse {
+      border-color: rgba(251, 191, 36, 1);
+    }
+
+    .scroll-label {
+      font-family: 'Cinzel', serif;
+      font-size: 9px;
+      letter-spacing: 0.3em;
+      color: rgba(253, 230, 138, 0.6);
+      text-transform: uppercase;
+      transition: opacity 0.3s;
+    }
+
+    /* Mouse-outline style */
+    .scroll-mouse {
+      width: 22px;
+      height: 34px;
+      border: 1.5px solid rgba(251, 191, 36, 0.65);
+      border-radius: 12px;
+      display: flex;
+      justify-content: center;
+      padding-top: 5px;
+      transition: border-color 0.3s;
+    }
+
+    .scroll-wheel {
+      width: 3px;
+      height: 7px;
+      background: rgba(251, 191, 36, 0.9);
+      border-radius: 2px;
+      animation: wheelScroll 1.6s ease-in-out infinite;
+    }
+
+    @keyframes wheelScroll {
       0% {
-        background-position: 200% center;
+        transform: translateY(0);
+        opacity: 1;
+      }
+
+      60% {
+        transform: translateY(9px);
+        opacity: 0;
+      }
+
+      61% {
+        transform: translateY(0);
+        opacity: 0;
       }
 
       100% {
-        background-position: 0% center;
+        opacity: 1;
       }
     }
 
-    .shimmer-maroon-silver {
-      background: linear-gradient(90deg,
-          #6b1a1a 0%,
-          #8b2222 15%,
-          #e8d5d5 30%,
-          #f5eded 40%,
-          #e0c8c8 50%,
-          #8b2222 65%,
-          #6b1a1a 80%,
-          #8b2222 100%);
-      background-size: 200% auto;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      animation: maroonSilverShimmer 4s linear infinite;
+    /* Double chevron below mouse */
+    .scroll-chevrons {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
     }
 
-    @keyframes maroonSilverShimmer {
-      0% {
-        background-position: 200% center;
-      }
+    .chev {
+      width: 10px;
+      height: 10px;
+      border-right: 1.5px solid rgba(251, 191, 36, 0.7);
+      border-bottom: 1.5px solid rgba(251, 191, 36, 0.7);
+      transform: rotate(45deg);
+    }
 
+    .chev:nth-child(1) {
+      animation: chevPulse 1.6s ease-in-out infinite 0s;
+    }
+
+    .chev:nth-child(2) {
+      animation: chevPulse 1.6s ease-in-out infinite 0.2s;
+      opacity: 0.5;
+    }
+
+    @keyframes chevPulse {
+
+      0%,
       100% {
-        background-position: 0% center;
+        opacity: 0.9;
+        transform: rotate(45deg) translate(0, 0);
+      }
+
+      50% {
+        opacity: 0.3;
+        transform: rotate(45deg) translate(2px, 2px);
       }
     }
 
@@ -428,6 +458,42 @@
       justify-content: center;
       width: min(680px, 90vw);
       margin: 0 auto;
+    }
+
+    .fade-reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: reveal 0.8s ease forwards;
+    }
+
+    @keyframes reveal {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ══ FOOTER BG ══ */
+    .footer-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('couple-images.png');
+      background-size: cover;
+      background-position: center 30%;
+      background-repeat: no-repeat;
+      opacity: 0.8;
+      z-index: 0;
+    }
+
+    .footer-bg-mobile {
+      position: absolute;
+      inset: 0;
+      background-image: url('couple-images-mobile.png');
+      background-size: cover;
+      background-position: center 40%;
+      background-repeat: no-repeat;
+      opacity: 0.8;
+      z-index: 0;
     }
 
     #enter-screen {
@@ -471,67 +537,21 @@
         transform: translateY(-6px);
       }
     }
-
-    .fade-reveal {
-      opacity: 0;
-      transform: translateY(20px);
-      animation: reveal 0.8s ease forwards;
-    }
-
-    @keyframes reveal {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .footer-bg {
-      position: absolute;
-      inset: 0;
-      background-image: url('couple-images.png');
-      background-size: cover;
-      background-position: center 30%;
-      background-repeat: no-repeat;
-      opacity: 0.8;
-      z-index: 0;
-      /* filter: sepia(40%) saturate(80%); */
-    }
-
-
-    .footer-bg-mobile {
-      position: absolute;
-      inset: 0;
-      background-image: url('couple-images-mobile.png');
-      background-size: cover;
-      background-position: center 40%;
-      background-repeat: no-repeat;
-      opacity: 0.8;
-      z-index: 0;
-      /* filter: sepia(40%) saturate(80%); */
-    }
   </style>
 </head>
 
 <body class="text-gray-800">
-  <div id="enter-screen" style="
-  position:fixed;
-  inset:0;
-  background:#fdf8f0;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  z-index:9999;
-  cursor:pointer;
-">
+
+  <!-- Enter screen -->
+  <div id="enter-screen"
+    style="position:fixed;inset:0;background:#fdf8f0;display:flex;align-items:center;justify-content:center;z-index:9999;cursor:pointer;">
     <div class="flex flex-col items-center justify-center">
       <div class="fade-in mb-6">
         <div class="inline-flex items-center justify-center text-5xl">
           <span class="font-vibes moroon-text text-6xl p-2">K &nbsp; ♥&nbsp;M </span>
         </div>
       </div>
-      <span>
-        Tap to Enter
-      </span>
+      <span>Tap to Enter</span>
     </div>
   </div>
 
@@ -539,11 +559,10 @@
   <audio id="bg-music" loop>
     <source src="bgm.mp3" type="audio/mpeg">
   </audio>
-
   <div id="hearts" class="fixed inset-0 pointer-events-none z-40 overflow-hidden"></div>
 
   <!-- ══ HERO ══ -->
-  <section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden pt-10 pb-16">
+  <section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden pt-10 pb-24">
 
     <div class="hero-temple-bg"></div>
     <div class="hero-overlay"></div>
@@ -561,46 +580,37 @@
       style="background:radial-gradient(circle at 100% 100%,rgba(251,191,36,0.40) 0%,transparent 70%);"></div>
 
     <div class="relative z-10 text-center px-6 max-w-4xl mx-auto">
-
       <p
         class="fade-in fade-in-delay-1 font-cinzel text-xs tracking-[0.25em] uppercase mb-1 hero-tagline font-bold py-1">
-        Two hearts, one choice
-      </p>
+        Two hearts, one choice</p>
       <p
         class="fade-in fade-in-delay-1 font-cinzel text-xs tracking-[0.25em] uppercase mb-1 hero-tagline font-bold py-1">
-        To love, to grow,
-      </p>
+        To love, to grow,</p>
       <p
         class="fade-in fade-in-delay-1 font-cinzel text-xs tracking-[0.25em] uppercase mb-1 hero-tagline font-bold py-1">
-        To stay… forever.
-      </p>
+        To stay… forever.</p>
       <p
         class="fade-in fade-in-delay-1 font-cinzel text-xs tracking-[0.25em] uppercase mb-2 hero-tagline font-bold py-2">
-        Together with our families
-      </p>
+        Together with our families</p>
 
       <div
-        class="hero-floral-container fade-in fade-in-delay-1 hero-float mx-auto xl:px-[9rem] xl:py-[9rem] lg:px-[6rem] lg:py-[6rem] md:px-[6rem] md:py-[6rem] sm:px-[5rem] sm:py-[5rem]  px-[2rem] py-[2rem]">
-
+        class="hero-floral-container fade-in fade-in-delay-1 hero-float mx-auto xl:px-[9rem] xl:py-[9rem] lg:px-[6rem] lg:py-[6rem] md:px-[6rem] md:py-[6rem] sm:px-[5rem] sm:py-[5rem] px-[2rem] py-[2rem]">
         <svg class="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 500 380"
           preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" style="z-index:0;">
-
           <rect x="0" y="0" width="500" height="380" rx="4" fill="rgba(0,0,0,0.42)" />
-
           <rect x="8" y="8" width="484" height="364" rx="3" fill="none" stroke="rgba(201,168,76,0.6)"
             stroke-width="1" />
           <rect x="14" y="14" width="472" height="352" rx="2" fill="none" stroke="rgba(201,168,76,0.35)"
             stroke-width="0.5" />
-
           <g opacity="0.75" fill="none" stroke="rgba(201,168,76,0.9)" stroke-width="1">
             <circle cx="8" cy="8" r="18" fill="rgba(201,168,76,0.08)" stroke="rgba(201,168,76,0.5)"
               stroke-width="0.8" />
             <circle cx="8" cy="8" r="5" fill="rgba(201,168,76,0.4)" stroke="none" />
-            <ellipse cx="8" cy="-8" rx="4" ry="10" transform="rotate(0   8 8)" fill="rgba(201,168,76,0.25)"
+            <ellipse cx="8" cy="-8" rx="4" ry="10" transform="rotate(0 8 8)" fill="rgba(201,168,76,0.25)"
               stroke="rgba(201,168,76,0.7)" stroke-width="0.7" />
-            <ellipse cx="8" cy="-8" rx="4" ry="10" transform="rotate(45  8 8)" fill="rgba(201,168,76,0.25)"
+            <ellipse cx="8" cy="-8" rx="4" ry="10" transform="rotate(45 8 8)" fill="rgba(201,168,76,0.25)"
               stroke="rgba(201,168,76,0.7)" stroke-width="0.7" />
-            <ellipse cx="8" cy="-8" rx="4" ry="10" transform="rotate(90  8 8)" fill="rgba(201,168,76,0.25)"
+            <ellipse cx="8" cy="-8" rx="4" ry="10" transform="rotate(90 8 8)" fill="rgba(201,168,76,0.25)"
               stroke="rgba(201,168,76,0.7)" stroke-width="0.7" />
             <ellipse cx="8" cy="-8" rx="4" ry="10" transform="rotate(135 8 8)" fill="rgba(201,168,76,0.25)"
               stroke="rgba(201,168,76,0.7)" stroke-width="0.7" />
@@ -625,17 +635,16 @@
             <circle cx="6" cy="45" r="1.5" fill="rgba(201,168,76,0.7)" />
             <circle cx="3" cy="95" r="1.5" fill="rgba(201,168,76,0.7)" />
           </g>
-
           <g transform="translate(500,0) scale(-1,1)" opacity="0.75" fill="none" stroke="rgba(201,168,76,0.9)"
             stroke-width="1">
             <circle cx="8" cy="8" r="18" fill="rgba(201,168,76,0.08)" stroke="rgba(201,168,76,0.5)"
               stroke-width="0.8" />
             <circle cx="8" cy="8" r="5" fill="rgba(201,168,76,0.4)" stroke="none" />
-            <ellipse cx="8" cy="-8" rx="4" ry="10" transform="rotate(0   8 8)" fill="rgba(201,168,76,0.25)"
+            <ellipse cx="8" cy="-8" rx="4" ry="10" transform="rotate(0 8 8)" fill="rgba(201,168,76,0.25)"
               stroke="rgba(201,168,76,0.7)" stroke-width="0.7" />
-            <ellipse cx="8" cy="-8" rx="4" ry="10" transform="rotate(45  8 8)" fill="rgba(201,168,76,0.25)"
+            <ellipse cx="8" cy="-8" rx="4" ry="10" transform="rotate(45 8 8)" fill="rgba(201,168,76,0.25)"
               stroke="rgba(201,168,76,0.7)" stroke-width="0.7" />
-            <ellipse cx="8" cy="-8" rx="4" ry="10" transform="rotate(90  8 8)" fill="rgba(201,168,76,0.25)"
+            <ellipse cx="8" cy="-8" rx="4" ry="10" transform="rotate(90 8 8)" fill="rgba(201,168,76,0.25)"
               stroke="rgba(201,168,76,0.7)" stroke-width="0.7" />
             <ellipse cx="8" cy="-8" rx="4" ry="10" transform="rotate(135 8 8)" fill="rgba(201,168,76,0.25)"
               stroke="rgba(201,168,76,0.7)" stroke-width="0.7" />
@@ -660,17 +669,16 @@
             <circle cx="6" cy="45" r="1.5" fill="rgba(201,168,76,0.7)" />
             <circle cx="3" cy="95" r="1.5" fill="rgba(201,168,76,0.7)" />
           </g>
-
           <g transform="translate(0,380) scale(1,-1)" opacity="0.75" fill="none" stroke="rgba(201,168,76,0.9)"
             stroke-width="1">
             <circle cx="8" cy="8" r="18" fill="rgba(201,168,76,0.08)" stroke="rgba(201,168,76,0.5)"
               stroke-width="0.8" />
             <circle cx="8" cy="8" r="5" fill="rgba(201,168,76,0.4)" stroke="none" />
-            <ellipse cx="8" cy="-8" rx="4" ry="10" transform="rotate(0   8 8)" fill="rgba(201,168,76,0.25)"
+            <ellipse cx="8" cy="-8" rx="4" ry="10" transform="rotate(0 8 8)" fill="rgba(201,168,76,0.25)"
               stroke="rgba(201,168,76,0.7)" stroke-width="0.7" />
-            <ellipse cx="8" cy="-8" rx="4" ry="10" transform="rotate(45  8 8)" fill="rgba(201,168,76,0.25)"
+            <ellipse cx="8" cy="-8" rx="4" ry="10" transform="rotate(45 8 8)" fill="rgba(201,168,76,0.25)"
               stroke="rgba(201,168,76,0.7)" stroke-width="0.7" />
-            <ellipse cx="8" cy="-8" rx="4" ry="10" transform="rotate(90  8 8)" fill="rgba(201,168,76,0.25)"
+            <ellipse cx="8" cy="-8" rx="4" ry="10" transform="rotate(90 8 8)" fill="rgba(201,168,76,0.25)"
               stroke="rgba(201,168,76,0.7)" stroke-width="0.7" />
             <ellipse cx="8" cy="-8" rx="4" ry="10" transform="rotate(135 8 8)" fill="rgba(201,168,76,0.25)"
               stroke="rgba(201,168,76,0.7)" stroke-width="0.7" />
@@ -695,17 +703,16 @@
             <circle cx="6" cy="45" r="1.5" fill="rgba(201,168,76,0.7)" />
             <circle cx="3" cy="95" r="1.5" fill="rgba(201,168,76,0.7)" />
           </g>
-
           <g transform="translate(500,380) scale(-1,-1)" opacity="0.75" fill="none" stroke="rgba(201,168,76,0.9)"
             stroke-width="1">
             <circle cx="8" cy="8" r="18" fill="rgba(201,168,76,0.08)" stroke="rgba(201,168,76,0.5)"
               stroke-width="0.8" />
             <circle cx="8" cy="8" r="5" fill="rgba(201,168,76,0.4)" stroke="none" />
-            <ellipse cx="8" cy="-8" rx="4" ry="10" transform="rotate(0   8 8)" fill="rgba(201,168,76,0.25)"
+            <ellipse cx="8" cy="-8" rx="4" ry="10" transform="rotate(0 8 8)" fill="rgba(201,168,76,0.25)"
               stroke="rgba(201,168,76,0.7)" stroke-width="0.7" />
-            <ellipse cx="8" cy="-8" rx="4" ry="10" transform="rotate(45  8 8)" fill="rgba(201,168,76,0.25)"
+            <ellipse cx="8" cy="-8" rx="4" ry="10" transform="rotate(45 8 8)" fill="rgba(201,168,76,0.25)"
               stroke="rgba(201,168,76,0.7)" stroke-width="0.7" />
-            <ellipse cx="8" cy="-8" rx="4" ry="10" transform="rotate(90  8 8)" fill="rgba(201,168,76,0.25)"
+            <ellipse cx="8" cy="-8" rx="4" ry="10" transform="rotate(90 8 8)" fill="rgba(201,168,76,0.25)"
               stroke="rgba(201,168,76,0.7)" stroke-width="0.7" />
             <ellipse cx="8" cy="-8" rx="4" ry="10" transform="rotate(135 8 8)" fill="rgba(201,168,76,0.25)"
               stroke="rgba(201,168,76,0.7)" stroke-width="0.7" />
@@ -730,68 +737,57 @@
             <circle cx="6" cy="45" r="1.5" fill="rgba(201,168,76,0.7)" />
             <circle cx="3" cy="95" r="1.5" fill="rgba(201,168,76,0.7)" />
           </g>
-
           <g transform="translate(250,8)" fill="rgba(201,168,76,0.8)">
             <circle cx="0" cy="0" r="3.5" />
             <ellipse cx="0" cy="-10" rx="3" ry="7" fill="rgba(201,168,76,0.35)" stroke="rgba(201,168,76,0.7)"
               stroke-width="0.7" />
-            <ellipse cx="0" cy="-10" rx="3" ry="7" transform="rotate(60  0 0)" fill="rgba(201,168,76,0.35)"
+            <ellipse cx="0" cy="-10" rx="3" ry="7" transform="rotate(60 0 0)" fill="rgba(201,168,76,0.35)"
               stroke="rgba(201,168,76,0.7)" stroke-width="0.7" />
             <ellipse cx="0" cy="-10" rx="3" ry="7" transform="rotate(-60 0 0)" fill="rgba(201,168,76,0.35)"
               stroke="rgba(201,168,76,0.7)" stroke-width="0.7" />
             <circle cx="-22" cy="2" r="2" fill="rgba(201,168,76,0.6)" />
-            <circle cx=" 22" cy="2" r="2" fill="rgba(201,168,76,0.6)" />
+            <circle cx="22" cy="2" r="2" fill="rgba(201,168,76,0.6)" />
             <circle cx="-38" cy="5" r="1.5" fill="rgba(201,168,76,0.5)" />
-            <circle cx=" 38" cy="5" r="1.5" fill="rgba(201,168,76,0.5)" />
+            <circle cx="38" cy="5" r="1.5" fill="rgba(201,168,76,0.5)" />
           </g>
-
           <g transform="translate(250,372)" fill="rgba(201,168,76,0.8)">
             <circle cx="0" cy="0" r="3.5" />
             <ellipse cx="0" cy="10" rx="3" ry="7" fill="rgba(201,168,76,0.35)" stroke="rgba(201,168,76,0.7)"
               stroke-width="0.7" />
-            <ellipse cx="0" cy="10" rx="3" ry="7" transform="rotate(60  0 0)" fill="rgba(201,168,76,0.35)"
+            <ellipse cx="0" cy="10" rx="3" ry="7" transform="rotate(60 0 0)" fill="rgba(201,168,76,0.35)"
               stroke="rgba(201,168,76,0.7)" stroke-width="0.7" />
             <ellipse cx="0" cy="10" rx="3" ry="7" transform="rotate(-60 0 0)" fill="rgba(201,168,76,0.35)"
               stroke="rgba(201,168,76,0.7)" stroke-width="0.7" />
             <circle cx="-22" cy="-2" r="2" fill="rgba(201,168,76,0.6)" />
-            <circle cx=" 22" cy="-2" r="2" fill="rgba(201,168,76,0.6)" />
+            <circle cx="22" cy="-2" r="2" fill="rgba(201,168,76,0.6)" />
             <circle cx="-38" cy="-5" r="1.5" fill="rgba(201,168,76,0.5)" />
-            <circle cx=" 38" cy="-5" r="1.5" fill="rgba(201,168,76,0.5)" />
+            <circle cx="38" cy="-5" r="1.5" fill="rgba(201,168,76,0.5)" />
           </g>
-
           <g transform="translate(8,190)" fill="rgba(201,168,76,0.8)">
             <circle cx="0" cy="0" r="3" />
             <circle cx="0" cy="-18" r="1.8" fill="rgba(201,168,76,0.5)" />
-            <circle cx="0" cy=" 18" r="1.8" fill="rgba(201,168,76,0.5)" />
+            <circle cx="0" cy="18" r="1.8" fill="rgba(201,168,76,0.5)" />
           </g>
-
           <g transform="translate(492,190)" fill="rgba(201,168,76,0.8)">
             <circle cx="0" cy="0" r="3" />
             <circle cx="0" cy="-18" r="1.8" fill="rgba(201,168,76,0.5)" />
-            <circle cx="0" cy=" 18" r="1.8" fill="rgba(201,168,76,0.5)" />
+            <circle cx="0" cy="18" r="1.8" fill="rgba(201,168,76,0.5)" />
           </g>
-
         </svg>
 
         <h1 class="font-vibes leading-none gold-text-bright relative z-10 whitespace-nowrap p-4"
-          style="font-size:clamp(3rem,9vw,6.5rem);">
-          Krishna Kumar
-        </h1>
+          style="font-size:clamp(3rem,9vw,6.5rem);">Krishna Kumar</h1>
         <div class="flex items-center justify-center gap-6 my-3 relative z-10">
           <div class="flex-1 h-px hero-line-l" style="max-width:100px;"></div>
           <span class="font-cinzel text-sm hero-weds">WEDS</span>
           <div class="flex-1 h-px hero-line-r" style="max-width:100px;"></div>
         </div>
-        <h1 class="font-vibes leading-none gold-text-bright relative z-10  whitespace-nowrap p-4"
-          style="font-size:clamp(3rem,9vw,6.5rem);">
-          Mythili
-        </h1>
-
+        <h1 class="font-vibes leading-none gold-text-bright relative z-10 whitespace-nowrap p-4"
+          style="font-size:clamp(3rem,9vw,6.5rem);">Mythili</h1>
       </div>
 
-      <p class="fade-in fade-in-delay-2 font-cormorant text-lg md:text-xl mt-4 italic hero-invite">
-        invite you to celebrate our wedding
-      </p>
+      <p class="fade-in fade-in-delay-2 font-cormorant text-lg md:text-xl mt-4 italic hero-invite">invite you to
+        celebrate our wedding</p>
 
       <div class="lotus-divider mt-6 text-xl hero-divider-icon">
         <span>✿</span>
@@ -799,8 +795,23 @@
         <span>✿</span>
       </div>
     </div>
+
+    <!-- ══ SCROLL DOWN INDICATOR ══ -->
+    <a href="#countdown" class="scroll-down-btn" aria-label="Scroll to see more">
+      <span class="scroll-label">Scroll</span>
+      <div class="scroll-mouse">
+        <div class="scroll-wheel"></div>
+      </div>
+      <div class="scroll-chevrons">
+        <div class="chev"></div>
+        <div class="chev"></div>
+      </div>
+    </a>
+
   </section>
 
+  <!-- Countdown anchor -->
+  <div id="countdown"></div>
 
   <!-- ══ COUNTDOWN ══ -->
   <section class="py-20 px-6 bg-pattern">
@@ -809,53 +820,42 @@
       </p>
       <h2 class="fade-in font-playfair text-4xl md:text-5xl mb-10" style="color:var(--maroon);">Counting Down</h2>
       <div class="fade-in flex items-start justify-center flex-wrap" style="gap:0;">
-
         <div class="text-center" style="min-width:72px;">
           <div class="font-playfair gold-text" id="days"
             style="font-size:clamp(2.5rem,8vw,4rem);font-weight:300;line-height:1;letter-spacing:-2px;">00</div>
           <div class="font-cinzel text-xs tracking-widest mt-2" style="color:rgba(107,26,26,0.55);">DAYS</div>
         </div>
-
         <div class="font-playfair"
           style="font-size:2rem;color:rgba(201,168,76,0.45);line-height:1;padding:4px 6px 0;align-self:flex-end;">·
         </div>
-
         <div class="text-center" style="min-width:72px;">
           <div class="font-playfair gold-text" id="hours"
             style="font-size:clamp(2.5rem,8vw,4rem);font-weight:300;line-height:1;letter-spacing:-2px;">00</div>
           <div class="font-cinzel text-xs tracking-widest mt-2" style="color:rgba(107,26,26,0.55);">HOURS</div>
         </div>
-
         <div class="font-playfair"
           style="font-size:2rem;color:rgba(201,168,76,0.45);line-height:1;padding:4px 6px 0;align-self:flex-end;">·
         </div>
-
         <div class="text-center" style="min-width:72px;">
           <div class="font-playfair gold-text" id="minutes"
             style="font-size:clamp(2.5rem,8vw,4rem);font-weight:300;line-height:1;letter-spacing:-2px;">00</div>
           <div class="font-cinzel text-xs tracking-widest mt-2" style="color:rgba(107,26,26,0.55);">MINUTES</div>
         </div>
-
         <div class="font-playfair"
           style="font-size:2rem;color:rgba(201,168,76,0.45);line-height:1;padding:4px 6px 0;align-self:flex-end;">·
         </div>
-
         <div class="text-center" style="min-width:72px;">
           <div class="font-playfair gold-text" id="seconds"
             style="font-size:clamp(2.5rem,8vw,4rem);font-weight:300;line-height:1;letter-spacing:-2px;">00</div>
           <div class="font-cinzel text-xs tracking-widest mt-2" style="color:rgba(107,26,26,0.55);">SECONDS</div>
         </div>
-
       </div>
     </div>
     <div class="max-w-2xl mx-auto text-center hidden" id="wedding-live">
-      <h2 class="font-vibes text-5xl gold-text mb-4 p-4">We’re Married 💛</h2>
-      <p class="font-cormorant text-xl moroon-text">
-        Thank you for your love & blessings
-      </p>
+      <h2 class="font-vibes text-5xl gold-text mb-4 p-4">We're Married 💛</h2>
+      <p class="font-cormorant text-xl moroon-text">Thank you for your love & blessings</p>
     </div>
   </section>
-
 
   <!-- ══ PARENTS ══ -->
   <section class="py-20 px-6">
@@ -893,61 +893,19 @@
     </div>
   </section>
 
-
+  <!-- ══ TOGETHER SECTION ══ -->
   <section class="relative py-20 px-6 text-center bg-pattern">
-
-
-    <div class="relative z-10 max-w-xl mx-auto z-10 p-5">
-
+    <div class="relative z-10 max-w-xl mx-auto p-5">
       <p class="font-cinzel text-sm font-semibold">From then to now, from us to forever</p>
       <p class="font-vibes text-4xl md:text-6xl text-maroon mb-3 p-4">Krishna Kumar <br> &amp; <br> Mythili</p>
-      <p class="font-cinzel text-sm tracking-[0.25em]" style="color:rgba(107,26,26,1);">
-        are tying the knot</p>
+      <p class="font-cinzel text-sm tracking-[0.25em]" style="color:rgba(107,26,26,1);">are tying the knot</p>
       <div class="ornament-divider my-8"><span style="color:var(--gold);">✦</span></div>
       <p class="font-playfair text-xl italic mb-6" style="color:rgba(107,26,26,0.75);">Your presence and blessings mean
         the world to us.</p>
-
       <p class="font-playfair text-xs" style="color:rgba(107,26,26,0.9);">Made with endless love &amp; a thousand
         blessings ♥</p>
     </div>
   </section>
-
-  <!-- <section class="relative py-20 px-6 text-center hidden lg:block">
-    <div class="footer-bg"></div>
-
-    <div class="relative z-10 max-w-xl mx-auto z-10 p-5" style="background-color:rgba(253, 248, 240,0.8);">
-
-      <p class="font-cinzel text-sm font-semibold">From then to now, from us to forever</p>
-      <p class="font-vibes text-4xl md:text-6xl text-maroon mb-3 p-4">Krishna Kumar <br> &amp; <br> Mythili</p>
-      <p class="font-cinzel text-sm tracking-[0.25em]" style="color:rgba(107,26,26,1);">
-        are tying the knot</p>
-      <div class="ornament-divider my-8"><span style="color:var(--gold);">✦</span></div>
-      <p class="font-playfair text-xl italic mb-6" style="color:rgba(107,26,26,0.75);">Your presence and blessings mean
-        the world to us.</p>
-
-      <p class="font-playfair text-xs" style="color:rgba(107,26,26,0.9);">Made with endless love &amp; a thousand
-        blessings ♥</p>
-    </div>
-  </section> -->
-  <!-- <section class="relative py-20 px-6 text-center block lg:hidden">
-    <div class="footer-bg-mobile"></div>
-
-    <div class="h-[420px] md:h-[300px]"></div>
-
-    <div class="relative z-10 max-w-xl mx-auto z-10 p-5" style="background-color:rgba(253, 248, 240,0.8);">
-      <p class="font-cinzel text-sm font-semibold">From then to now, from us to forever</p>
-      <p class="font-vibes text-4xl md:text-6xl text-maroon mb-3 px-2 md:px-4 py-4">Krishna Kumar <br> &amp; <br>
-        Mythili</p>
-      <p class="font-cinzel text-sm tracking-[0.25em]" style="color:rgba(107,26,26,1);">
-        are tying the knot</p>
-      <div class="ornament-divider my-8"><span style="color:var(--gold);">✦</span></div>
-      <p class="font-playfair text-xl italic mb-6" style="color:rgba(107,26,26,0.75);">Your presence and blessings mean
-        the world to us.</p>
-      <p class="font-playfair text-xs" style="color:rgba(107,26,26,0.9);">Made with endless love &amp; a thousand
-        blessings ♥</p>
-    </div>
-  </section> -->
-
 
   <!-- ══ EVENTS ══ -->
   <section id="story" class="py-20 px-6">
@@ -984,9 +942,6 @@
       </div>
     </div>
   </section>
-
-
-
 
   <!-- ══ WEDDING DETAILS ══ -->
   <section id="details" class="py-20 px-6 bg-pattern">
@@ -1057,10 +1012,10 @@
         </div>
       </div>
       <div class="mapouter rounded-2xl">
-        <div class="gmap_canvas  rounded-2xl shadow-lg border border-gray-300"><iframe class="gmap_iframe" width="100%"
-            frameborder="0" scrolling="no" marginheight="0" marginwidth="0"
-            src="https://maps.google.com/maps?width=600&amp;height=400&amp;hl=en&amp;q=ssk mahal&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe><a
-            href="https://embed-googlemap.com">embed-googlemap.com</a></div>
+        <div class="gmap_canvas rounded-2xl shadow-lg border border-gray-300">
+          <iframe class="gmap_iframe" width="100%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"
+            src="https://maps.google.com/maps?width=600&amp;height=400&amp;hl=en&amp;q=ssk mahal&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe>
+        </div>
         <style>
           .mapouter {
             position: relative;
@@ -1081,24 +1036,23 @@
           }
         </style>
       </div>
-
     </div>
   </section>
+
   <script>
-    // ── Countdown ──
-    const weddingDate = new Date('2026-04-23T09:30:00+05:30');
+    // ── Countdown (corrected to 7:30 AM) ──
+    const weddingDate = new Date('2026-04-23T07:30:00+05:30');
     function updateCountdown() {
       const diff = weddingDate - new Date();
       if (diff <= 0) {
-        ['days', 'hours', 'minutes', 'seconds'].forEach(id => {
-          document.getElementById(id).textContent = '00';
-        });
-
-        showWeddingLive(); // 👈 trigger change
+        ['days', 'hours', 'minutes', 'seconds'].forEach(id => { document.getElementById(id).textContent = '00'; });
+        showWeddingLive();
         return;
       }
-      const d = Math.floor(diff / (1000 * 60 * 60 * 24)), h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
-        m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)), s = Math.floor((diff % (1000 * 60)) / 1000);
+      const d = Math.floor(diff / (1000 * 60 * 60 * 24)),
+        h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+        m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)),
+        s = Math.floor((diff % (1000 * 60)) / 1000);
       document.getElementById('days').textContent = String(d).padStart(2, '0');
       document.getElementById('hours').textContent = String(h).padStart(2, '0');
       document.getElementById('minutes').textContent = String(m).padStart(2, '0');
@@ -1111,6 +1065,7 @@
       document.getElementById('wedding-live').classList.remove('hidden');
       document.getElementById('wedding-live').classList.add('fade-reveal');
     }
+
     // ── Fade-in on scroll ──
     const fadeEls = document.querySelectorAll('.fade-in');
     const io = new IntersectionObserver(entries => {
@@ -1132,34 +1087,25 @@
     }
     setInterval(createHeart, 2200);
 
-    // ── Music: autoplay on load at 50% volume ──
+    // ── Music ──
     const audio = document.getElementById('bg-music');
     const btn = document.getElementById('music-btn');
     let playing = false;
-
-    audio.volume = 0.3; // 50% volume
+    audio.volume = 0.3;
 
     function startMusic() {
       audio.play().then(() => {
-        audio.muted = false; // 🔥 unmute after autoplay
+        audio.muted = false;
         audio.volume = 0.5;
-
         playing = true;
         btn.classList.add('playing');
         btn.textContent = '♫';
-      }).catch(() => {
-        playing = false;
-      });
+      }).catch(() => { playing = false; });
     }
-
-    // Try autoplay immediately
     startMusic();
 
-    // Fallback: if autoplay is blocked by the browser, start on first user interaction
     function onFirstInteraction() {
-      if (!playing) {
-        startMusic();
-      }
+      if (!playing) startMusic();
       document.removeEventListener('click', onFirstInteraction);
       document.removeEventListener('touchstart', onFirstInteraction);
       document.removeEventListener('keydown', onFirstInteraction);
@@ -1169,39 +1115,31 @@
     document.addEventListener('keydown', onFirstInteraction);
 
     function toggleMusic() {
-      if (playing) {
-        audio.pause();
-        btn.classList.remove('playing');
-        btn.textContent = '♪';
-      } else {
-        audio.play().catch(() => { });
-        btn.classList.add('playing');
-        btn.textContent = '♫';
-      }
+      if (playing) { audio.pause(); btn.classList.remove('playing'); btn.textContent = '♪'; }
+      else { audio.play().catch(() => { }); btn.classList.add('playing'); btn.textContent = '♫'; }
       playing = !playing;
     }
-    function startMusicOnce() {
-      audio.play();
-      playing = true;
-      btn.classList.add('playing');
-      btn.textContent = '♫';
-    }
+
     document.getElementById('enter-screen').addEventListener('click', () => {
       audio.volume = 0.3;
       audio.play();
-
       playing = true;
       btn.classList.add('playing');
       btn.textContent = '♫';
-
       document.getElementById('enter-screen').style.display = 'none';
     });
 
-
-    // ── Add to calendar ──
-    function addToCalendar() {
-      window.open('https://calendar.google.com/calendar/render?action=TEMPLATE&text=Krishna+Kumar+%26+Mythili+Wedding&dates=20260423T020000Z/20260423T040000Z&details=SSK+Mahal+A%2FC%2C+Guduvanchery%2C+Tamil+Nadu&location=SSK+Mahal%2C+Guduvanchery', '_blank');
-    }
+    // ── Hide scroll indicator after user scrolls ──
+    const scrollBtn = document.querySelector('.scroll-down-btn');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 80) {
+        scrollBtn.style.opacity = '0';
+        scrollBtn.style.pointerEvents = 'none';
+      } else {
+        scrollBtn.style.opacity = '1';
+        scrollBtn.style.pointerEvents = 'auto';
+      }
+    }, { passive: true });
   </script>
 </body>
 
